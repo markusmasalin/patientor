@@ -20,7 +20,6 @@
     "@types/react-router-dom": "^5.1.2",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
-    "eslint-config-react": "^1.1.7",
     "react-scripts": "3.4.4",
     "typescript": "^3.7.0"
   },
