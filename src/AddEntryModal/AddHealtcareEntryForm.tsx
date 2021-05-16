@@ -4,7 +4,7 @@ import { Field, Formik, Form } from "formik";
 import { useStateValue } from '../state';
 import { TextField } from "../AddPatientModal/FormField";
 import { Entry } from "../types";
-import { EntryOptions, EntrySelectField, DiagnosisSelection, NumberField } from "./EntryFormField";
+import { DiagnosisSelection, NumberField } from "./EntryFormField";
 
 /*
  * use type Patient, but omit id and entries,
@@ -18,13 +18,7 @@ interface Props {
 }
 
 
-const entryOptions: EntryOptions[] = [
-  { value: "Hospital", label: "Hospital" },
-  { value: "HealthCheckEntry", label: "HealthCheckEntry" },
-  { value: "OccupationalEntry", label: "OccupationalEntry" }
-];
-
-export const AddEntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
+export const AddHealthCheckEntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
     const [{ diagnosis }] = useStateValue();
   
     return (
@@ -33,11 +27,8 @@ export const AddEntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
         description: "",
         date: "",
         specialist: "",
-        type: "Hospital",
-        discharge: {
-          date: "",
-          criteria: ""
-        },
+        type: "HealthCheck",
+        healthCheckRating: 0,
         id: ""
 
 
@@ -82,11 +73,6 @@ export const AddEntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
               placeholder="Specialist"
               name="specialist"
               component={TextField}
-            />
-             <EntrySelectField
-              label="Gender"
-              name="gender"
-              options={entryOptions}
             />
              <DiagnosisSelection
             setFieldValue={setFieldValue}
@@ -141,5 +127,4 @@ export const AddEntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
   );
 };
 
-export default AddEntryForm;
-
+export default AddHealthCheckEntryForm;

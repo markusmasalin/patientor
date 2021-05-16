@@ -60,7 +60,21 @@ const ExtendedDetails: React.FC<{entry: Entry}> = ({entry}) => {
                         );
                     }))
                 }
-                </ul>    
+                </ul>   
+                {(entry.type === 'Hospital') &&
+                 <>
+                   <h4>Discharge</h4>
+                   <p>{entry.discharge.criteria} {entry.discharge.date} </p>
+                 </>
+                   }
+                {(entry.type === 'OccupationalHealthcare') &&
+                 <>
+                   <h4>Employer</h4>
+                   <p>{entry.employerName}</p>
+                   <p>started: {entry.sickLeave?.startDate} </p> 
+                   <p>ended: {entry.sickLeave?.endDate} </p> 
+                 </>
+                   }  
                  </Segment>
 
             </Grid.Column>

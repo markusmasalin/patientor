@@ -19,6 +19,11 @@ export type Action =
       type: "SET_DIAGNOSIS_DATA";
       payload: Diagnosis[];
     }
+    |
+    {
+      type: "CHANGE_PATIENT_DATA";
+      payload: Patient;
+    }
     ;
 
 export const reducer = (state: State, action: Action): State => {
@@ -50,6 +55,12 @@ export const reducer = (state: State, action: Action): State => {
             [action.payload.id]: action.payload
           }
         };
+      case "CHANGE_PATIENT_DATA":
+        console.log(action, "action");
+        console.log(action.payload, "actionPayload");
+        return {
+          ...state
+        };
         case "SET_DIAGNOSIS_DATA":
           return {
             ...state,
@@ -80,6 +91,12 @@ export const addPatientData = (patientDataFromApi: Patient ): Action => {
 export const addPatient = (newPatient: Patient ): Action => {
   return { 
     type: "ADD_PATIENT", payload: newPatient 
+  };
+};
+
+export const changePatientData = (changedPatient: Patient): Action => {
+    return {
+    type: "CHANGE_PATIENT_DATA", payload: changedPatient
   };
 };
 
